@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Autorise le HTTP NON chiffré UNIQUEMENT en debug, pour tester
+         l'API locale depuis un téléphone physique (option dart-define) :
+             flutter run (dart-define=API_URL=http://192.168.1.42:4000/graphql)
+         En release, Android bloque le HTTP : il faut du HTTPS. -->
+    <application
+        android:usesCleartextTraffic="true"
+        tools:targetApi="28" />
+</manifest>

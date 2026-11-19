@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FindMyDoc - Onboarding</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#2E7D32',
+              dark: '#1B5E20',
+              light: '#4CAF50',
+              container: '#E8F5E9',
+              surface: '#F9FBF9',
+              neutral: '#212121',
+              muted: '#757575'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'm3': '16px',
+            'm3-lg': '24px',
+            'm3-pill': '9999px'
+          },
+          boxShadow: {
+            'elevation-1': '0px 1px 3px 1px rgba(0, 0, 0, 0.08), 0px 1px 2px 0px rgba(0, 0, 0, 0.05)',
+            'elevation-2': '0px 2px 6px 2px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)',
+            'brand-glow': '0px 8px 24px -4px rgba(46, 125, 50, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Smooth slide animations */
+    .slide-item {
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .slide-item.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+      position: relative;
+    }
+    .slide-item.hidden-slide {
+      opacity: 0;
+      transform: translateX(32px);
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .slide-item.hidden-slide-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .dot-indicator {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-brand-neutral font-sans antialiased min-h-screen flex items-center justify-center p-0 sm:p-4 select-none">
+
+  <!-- Mobile Device Frame Container (390px x 844px typical iPhone / Android standard) -->
+  <div class="relative w-full max-w-[390px] h-screen sm:h-[844px] bg-[#FFFFFF] sm:rounded-[44px] sm:shadow-2xl sm:border-[8px] sm:border-gray-900 overflow-hidden flex flex-col justify-between">
+    
+    <!-- Status Bar (Android / iOS Material 3) -->
+    <header class="w-full pt-3 px-6 pb-2 flex justify-between items-center text-xs font-semibold text-gray-800 z-30 select-none">
+      <span id="statusBarTime" class="tracking-tight text-[13px] font-bold">09:41</span>
+      <div class="flex items-center space-x-2 text-[12px] text-gray-700">
+        <i class="fa-solid fa-signal text-[11px]"></i>
+        <i class="fa-solid fa-wifi text-[12px]"></i>
+        <i class="fa-solid fa-battery-full text-[13px] text-brand"></i>
+      </div>
+    </header>
+
+    <!-- Top App Brand Bar with Passer Button -->
+    <div class="w-full px-6 py-2 flex items-center justify-between z-20">
+      <div class="flex items-center gap-2">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuATkTXrX6l6ZUX5wrDK7m871S6fP5Lo-vWwAM6w7FI6Jzyfce-mAQ-horsHBH7-D6pG-agyvmm4NIRVsnwT6Yn5YHl1vG_fFGWxgX3A8uwqu3TxDRw1eYMWPnIfxoCnjetk6moUrDWDi_lrJLZXCtt60s7O6HXeZ0sE5InZViTcdH6NPC0ul-bdNYEFY7Z7U0orDNIX2GbHAzMOTVnBmo0S_2M7qEAEJ4zqr7W8n1KUUBHcTdLG4Bxa" alt="Logo FindMyDoc" class="w-7 h-7 object-contain drop-shadow-sm rounded-lg">
+        <span class="font-display font-bold text-gray-900 text-base tracking-tight flex items-center">
+          Find<span class="text-brand">MyDoc</span>
+        </span>
+      </div>
+      
+      <button id="skipBtn" onclick="goToSlide(2)" class="text-xs font-medium text-brand-muted hover:text-brand px-2.5 py-1 rounded-full transition-colors active:scale-95">
+        Passer
+      </button>
+    </div>
+
+    <!-- Slides Container Area -->
+    <main class="relative flex-1 w-full px-6 overflow-hidden flex flex-col">
+      <div class="relative w-full flex-1">
+
+        <!-- ================= SLIDE 1 ================= -->
+        <section id="slide-0" class="slide-item active flex flex-col items-center justify-center text-center h-full pb-4">
+          <!-- Illustration Container -->
+          <div class="relative w-full max-w-[280px] aspect-square mx-auto mb-6 flex items-center justify-center">
+            <!-- Ambient Backdrop Glow -->
+            <div class="absolute inset-2 bg-brand-container rounded-full blur-2xl opacity-70 -z-10 animate-pulse" style="animation-duration: 4s;"></div>
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmXDnQIHeYM1FT6qreFHcRLoTY3K60r0tvKj6hOyjoSGWouRCf08OPXaD_Ro7y_n3vH3BtJmN7bSLB3brkfqYkEbYNbkJJxmCYTrH_g2JGz87OGo6_OMxYQJlpvxvCkIzvlUKdTbwucrlp3JxLPqcPS5FPjHn5qMnqgWscvAATaGCasT-aBsM8IRiiwxYOMhj15ykSIgTkpLItgbz5ivjOvVOpTHU9qu5vf7kIrg7yantoeSz2BXx5" 
+              alt="Personne retrouvant un document officiel" 
+              class="w-full h-full object-contain rounded-2xl drop-shadow-md transform hover:scale-[1.02] transition-transform duration-300"
+            />
+            <div class="absolute -bottom-1 -right-1 bg-white px-3 py-1.5 rounded-full shadow-elevation-1 border border-brand-container flex items-center gap-1.5 text-[11px] font-semibold text-brand">
+              <span class="w-2 h-2 rounded-full bg-brand animate-ping"></span>
+              Document retrouvé
+            </div>
+          </div>
+
+          <!-- Slide 1 Text Content -->
+          <div class="space-y-3 px-2">
+            <h1 class="font-display text-[26px] leading-tight font-extrabold text-brand-neutral tracking-tight">
+              Retrouvez vos documents <span class="text-brand">facilement</span>
+            </h1>
+            <p class="text-[14px] leading-relaxed text-brand-muted font-normal max-w-[280px] mx-auto">
+              Déclarez un document perdu ou trouvé et laissez <strong class="text-gray-800 font-semibold">FindMyDoc</strong> faire le reste.
+            </p>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 2 ================= -->
+        <section id="slide-1" class="slide-item hidden-slide flex flex-col items-center justify-center text-center h-full pb-4">
+          <!-- Illustration Container -->
+          <div class="relative w-full max-w-[280px] aspect-square mx-auto mb-6 flex items-center justify-center">
+            <div class="absolute inset-2 bg-emerald-100 rounded-full blur-2xl opacity-70 -z-10 animate-pulse" style="animation-duration: 4s;"></div>
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkLYm-FKS9G8aHQGvbp0KmDnVrLKoHhQGzu4lWeRFMnYfhEtyv9lLgdcmE_-p4LYoRTPCz2kxJdzPNeFLC_YSHaREVWgK6ncP9eIC4-lmJoZkaxnJuMhG-7Hru5YwN19SY07fQqAG8-Da2lgwUWPwuMiqHEa5I3k8HGAglmMvIsU9BJutejTZ6FG1vDk9k5T9yrTfi6GsciTqmD37BTlBlE3B5g1wu9rMJN0bSdADN4svEe0PcyCv7" 
+              alt="Correspondance intelligente des documents" 
+              class="w-full h-full object-contain rounded-2xl drop-shadow-md transform hover:scale-[1.02] transition-transform duration-300"
+            />
+            <div class="absolute top-2 right-2 bg-emerald-800 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
+              <i class="fa-solid fa-bolt text-yellow-300 text-[10px]"></i>
+              Matching IA 98%
+            </div>
+          </div>
+
+          <!-- Slide 2 Text Content -->
+          <div class="space-y-3 px-2">
+            <h2 class="font-display text-[26px] leading-tight font-extrabold text-brand-neutral tracking-tight">
+              Des correspondances <span class="text-brand">intelligentes</span>
+            </h2>
+            <p class="text-[14px] leading-relaxed text-brand-muted font-normal max-w-[290px] mx-auto">
+              Notre algorithme analyse vos déclarations et vous propose les meilleurs matches en temps réel.
+            </p>
+          </div>
+        </section>
+
+        <!-- ================= SLIDE 3 ================= -->
+        <section id="slide-2" class="slide-item hidden-slide flex flex-col items-center justify-center text-center h-full pb-4">
+          <!-- Illustration Container -->
+          <div class="relative w-full max-w-[280px] aspect-square mx-auto mb-6 flex items-center justify-center">
+            <div class="absolute inset-2 bg-brand-container rounded-full blur-2xl opacity-75 -z-10 animate-pulse" style="animation-duration: 4s;"></div>
+            <img 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOx7abw86mFZiryyflxMm-d-hJUFylfxTUy3qkRYRmTAwf67qjjrkca7KmIldTfU7CiIptDeB6qvIAi3A2bC7-YytQR2cj2sAIlsLL9VEuBHKR04gOPigKL-wEvBqAssWkjLI8Zpwre4Kl6ftzzeg9PO9sT7_ItFHyfKuzsh8ERhkcO5tHwVZTW2fZ_4ltDXRl5JnZGmf3dlEtsYkKY23fR5AAS7DklZebp368QaeZVYVQl0tpql4Q" 
+              alt="Sécurité et restitution sécurisée de documents" 
+              class="w-full h-full object-contain rounded-2xl drop-shadow-md transform hover:scale-[1.02] transition-transform duration-300"
+            />
+            <div class="absolute -bottom-1 bg-white px-3 py-1.5 rounded-full shadow-elevation-1 border border-brand-container flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700">
+              <i class="fa-solid fa-shield-halved text-brand"></i>
+              Échange vérifié & sécurisé
+            </div>
+          </div>
+
+          <!-- Slide 3 Text Content -->
+          <div class="space-y-3 px-2">
+            <h2 class="font-display text-[26px] leading-tight font-extrabold text-brand-neutral tracking-tight">
+              Sécurisé et <span class="text-brand">simple</span>
+            </h2>
+            <p class="text-[14px] leading-relaxed text-brand-muted font-normal max-w-[290px] mx-auto">
+              Discutez en toute sécurité et restituez vos documents en quelques clics sans intermédiaire risqué.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Controls & Navigation -->
+    <footer class="w-full px-6 pb-8 pt-3 bg-gradient-to-t from-white via-white to-transparent flex flex-col items-center space-y-5 z-20">
+      
+      <!-- Page Indicators (Material 3 pill dots) -->
+      <div class="flex items-center justify-center gap-2" role="tablist" aria-label="Progression des diapositives">
+        <button onclick="goToSlide(0)" id="dot-0" aria-label="Slide 1" class="dot-indicator w-8 h-2 rounded-full bg-brand transition-all duration-300"></button>
+        <button onclick="goToSlide(1)" id="dot-1" aria-label="Slide 2" class="dot-indicator w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300"></button>
+        <button onclick="goToSlide(2)" id="dot-2" aria-label="Slide 3" class="dot-indicator w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300"></button>
+      </div>
+
+      <!-- Action Buttons Container -->
+      <div class="w-full space-y-2.5">
+        <!-- Next / Commencer Button -->
+        <button 
+          id="mainActionBtn" 
+          onclick="nextSlide()" 
+          class="w-full py-3.5 px-6 rounded-m3 bg-brand text-white font-semibold text-[15px] flex items-center justify-center gap-2 shadow-brand-glow hover:bg-brand-dark active:scale-[0.98] transition-all duration-200"
+        >
+          <span id="mainBtnText">Suivant</span>
+          <i id="mainBtnIcon" class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+        </button>
+
+        <!-- Secondary Button (Slide 3 only: 'J'ai déjà un compte') -->
+        <button 
+          id="secondaryBtn" 
+          onclick="triggerLoginAction()" 
+          class="w-full py-3 px-6 rounded-m3 bg-transparent hover:bg-brand-container/40 text-brand font-semibold text-[14px] transition-all duration-200 hidden border border-brand/20 active:scale-[0.98]"
+        >
+          J'ai déjà un compte
+        </button>
+      </div>
+
+      <!-- Home Indicator bar (iOS / Android gesture bar) -->
+      <div class="w-32 h-1 bg-gray-300 rounded-full mx-auto mt-1 opacity-70"></div>
+    </footer>
+
+  </div>
+
+  <!-- Interactive Slide Controller Script -->
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    const slides = [
+      document.getElementById('slide-0'),
+      document.getElementById('slide-1'),
+      document.getElementById('slide-2')
+    ];
+
+    const dots = [
+      document.getElementById('dot-0'),
+      document.getElementById('dot-1'),
+      document.getElementById('dot-2')
+    ];
+
+    const mainBtnText = document.getElementById('mainBtnText');
+    const mainBtnIcon = document.getElementById('mainBtnIcon');
+    const secondaryBtn = document.getElementById('secondaryBtn');
+    const skipBtn = document.getElementById('skipBtn');
+
+    function updateView(newIndex, direction = 1) {
+      if (newIndex < 0 || newIndex >= totalSlides) return;
+
+      // Update slide classes with direction awareness
+      slides.forEach((slide, idx) => {
+        slide.classList.remove('active', 'hidden-slide', 'hidden-slide-left');
+        if (idx === newIndex) {
+          slide.classList.add('active');
+        } else if (idx < newIndex) {
+          slide.classList.add('hidden-slide-left');
+        } else {
+          slide.classList.add('hidden-slide');
+        }
+      });
+
+      // Update dots
+      dots.forEach((dot, idx) => {
+        if (idx === newIndex) {
+          dot.className = "dot-indicator w-8 h-2 rounded-full bg-brand transition-all duration-300";
+        } else {
+          dot.className = "dot-indicator w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300";
+        }
+      });
+
+      // Update buttons & labels
+      if (newIndex === 2) {
+        mainBtnText.textContent = "Commencer";
+        mainBtnIcon.className = "fa-solid fa-sparkles text-xs";
+        secondaryBtn.classList.remove('hidden');
+        skipBtn.classList.add('opacity-0', 'pointer-events-none');
+      } else {
+        mainBtnText.textContent = "Suivant";
+        mainBtnIcon.className = "fa-solid fa-arrow-right text-xs";
+        secondaryBtn.classList.add('hidden');
+        skipBtn.classList.remove('opacity-0', 'pointer-events-none');
+      }
+
+      currentSlide = newIndex;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        updateView(currentSlide + 1, 1);
+      } else {
+        // Commencer triggered
+        showToast("Navigation vers l'écran d'Inscription...");
+      }
+    }
+
+    function goToSlide(index) {
+      const dir = index >= currentSlide ? 1 : -1;
+      updateView(index, dir);
+    }
+
+    function triggerLoginAction() {
+      showToast("Navigation vers l'écran de Connexion (Login)...");
+    }
+
+    // Interactive Toast Notification for preview
+    function showToast(msg) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-2xl z-50 flex items-center gap-2 border border-white/10 animate-bounce';
+      toast.innerHTML = `<i class="fa-solid fa-circle-check text-brand-light"></i> <span>${msg}</span>`;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.remove();
+      }, 2400);
+    }
+
+    // Touch swipe support for realistic mobile feeling
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeArea = document.querySelector('main');
+
+    swipeArea.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    swipeArea.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
+    }, {passive: true});
+
+    function handleGesture() {
+      if (touchEndX < touchStartX - 40) {
+        // Swipe left -> Next
+        if (currentSlide < totalSlides - 1) nextSlide();
+      }
+      if (touchEndX > touchStartX + 40) {
+        // Swipe right -> Previous
+        if (currentSlide > 0) updateView(currentSlide - 1, -1);
+      }
+    }
+
+    // Keyboard navigation (arrows)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft' && currentSlide > 0) updateView(currentSlide - 1, -1);
+    });
+  </script>
+</body>
+</html>
