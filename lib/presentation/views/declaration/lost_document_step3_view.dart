@@ -230,34 +230,6 @@ class _LostDocumentStep3ViewState extends State<LostDocumentStep3View> {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration: BoxDecoration(
-                color: AppColors.inputFill,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.bolt_rounded, color: AppColors.primary, size: 18),
-                  SizedBox(width: 6),
-                  Flexible(
-                    child: Text(
-                      'Recherche automatique d\'IA activée',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.primary,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
