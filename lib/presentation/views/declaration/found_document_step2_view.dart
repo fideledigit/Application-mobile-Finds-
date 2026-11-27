@@ -138,6 +138,16 @@ class _FoundDocumentStep2ViewState extends State<FoundDocumentStep2View> {
       return;
     }
 
+    if (!_hasPhoto) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: AppColors.error,
+          content: Text('Veuillez ajouter une photo du document.'),
+        ),
+      );
+      return;
+    }
+
     _syncDeclaration();
 
     Navigator.of(context).push(
@@ -878,13 +888,13 @@ class _FoundDocumentStep2ViewState extends State<FoundDocumentStep2View> {
           children: [
             Flexible(
               child: Text(
-                'Photo du document (optionnel)',
+                'Photo du document *',
                 style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600),
               ),
             ),
             SizedBox(width: 8),
             Text(
-              'Recommandé',
+              'Obligatoire',
               style: TextStyle(
                 fontSize: 12,
                 color: AppColors.primary,
