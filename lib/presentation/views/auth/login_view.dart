@@ -297,7 +297,6 @@ class _LoginViewState extends State<LoginView> {
                 // 4. Champ Adresse e-mail
                 CustomTextField(
                   label: 'Adresse e-mail',
-                  isRequiredText: 'Requis',
                   hintText: 'exemple@gmail.com',
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,

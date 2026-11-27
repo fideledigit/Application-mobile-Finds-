@@ -256,41 +256,6 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                         ),
                       ),
 
-                      // Badge inférieur gauche
-                      Positioned(
-                        bottom: 10,
-                        left: 14,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: AppColors.borderLight),
-                          ),
-                          child: const Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.lock_rounded,
-                                size: 12,
-                                color: AppColors.primary,
-                              ),
-                              SizedBox(width: 6),
-                              Text(
-                                'Connexion sécurisée',
-                                style: TextStyle(
-                                  fontSize: 11.5,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.primaryDark,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),

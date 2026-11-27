@@ -461,46 +461,6 @@ class OnboardingIllustration extends StatelessWidget {
           ],
         ),
 
-        // Badge flottant en bas : 🛡️ Échange vérifié & sécurisé
-        Positioned(
-          bottom: AppSizes.spaceMd,
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSizes.spaceMd,
-              vertical: AppSizes.spaceXsm,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(AppSizes.radiusL),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.08),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.verified_user_rounded,
-                  size: AppSizes.iconXsm,
-                  color: AppColors.primary,
-                ),
-                SizedBox(width: AppSizes.spaceXxsm + 2),
-                Text(
-                  'Échange vérifié & sécurisé',
-                  style: TextStyle(
-                    fontSize: AppSizes.fontXsm,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
       ],
     );
   }
